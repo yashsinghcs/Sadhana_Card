@@ -57,7 +57,7 @@ class MostFrontPage : AppCompatActivity() {
 
     private fun goTologinPage() {
 
-        val goTologinPage = Intent(this, ChoiceAdminvsDevotees::class.java)
+        val goTologinPage = Intent(this, ChoiceAdminVsDevotees::class.java)
         startActivity(goTologinPage,options.toBundle())
         finish()
 
