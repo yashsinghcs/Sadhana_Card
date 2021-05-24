@@ -23,7 +23,7 @@ class ChoiceAdminVsDevotees : AppCompatActivity() {
         }
 
         admin_logo.setOnClickListener{
-            startActivity(Intent(applicationContext,DevoteesLogin::class.java))
+            startActivity(Intent(applicationContext,AdminLogin::class.java))
         }
     }
 }
