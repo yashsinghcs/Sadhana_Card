@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -19,6 +20,7 @@ public class FirebaseClass(val user: AdminUser, val activity: Activity) {
     private lateinit var username: String
     private lateinit var password: String
     private lateinit var _emailId: String
+
     init {
         auth = FirebaseAuth.getInstance()
         databaseReference = FirebaseDatabase.getInstance().getReference("AdminUser")
@@ -41,6 +43,10 @@ public class FirebaseClass(val user: AdminUser, val activity: Activity) {
                     Toast.makeText(activity,"account cannot be created",Toast.LENGTH_SHORT).show()
                 }.addOnSuccessListener {
                     Toast.makeText(activity,"account created successfully",Toast.LENGTH_SHORT).show()
+                    val b : Context = activity
+                    b.startActivity(Intent(activity,AdminLogin::class.java))
+                    activity.finish()
+                    Toast.makeText(activity,"please login to continue",Toast.LENGTH_SHORT).show()
                 }
 
             }
@@ -48,6 +54,18 @@ public class FirebaseClass(val user: AdminUser, val activity: Activity) {
                 Toast.makeText(activity,"account cannot be created",Toast.LENGTH_SHORT).show()
             }
 
+    }
+
+    public fun loginUser()  {
+      auth.signInWithEmailAndPassword(user.userName,user.password).addOnSuccessListener {
+          Toast.makeText(activity,"Login Successfull",Toast.LENGTH_SHORT).show()
+           val a : AdminLogin = AdminLogin()
+           val b : Context = activity
+           b.startActivity(Intent(activity,MostFrontPage::class.java))
+          activity.finish()
+      }.addOnFailureListener {
+          Toast.makeText(activity,"Login Failed",Toast.LENGTH_SHORT).show()
+      }
     }
 
 }
