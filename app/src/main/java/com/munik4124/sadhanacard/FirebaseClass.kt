@@ -19,7 +19,7 @@ public class FirebaseClass(val user: AdminUser, val activity: Activity) {
     private lateinit var unique_id: String
     private lateinit var username: String
     private lateinit var password: String
-    private lateinit var _emailId: String
+    private lateinit var _fullName: String
 
     init {
         auth = FirebaseAuth.getInstance()
@@ -27,17 +27,17 @@ public class FirebaseClass(val user: AdminUser, val activity: Activity) {
         unique_id = user.unique_Id
         username = user.user_name
         password = user._password
-        _emailId = user.email_Id
+        _fullName = user.fullName
     }
 
     public fun registerUser() {
 
-        auth.createUserWithEmailAndPassword(user.emailId, user.password)
+        auth.createUserWithEmailAndPassword(user.userName, user.password)
             .addOnSuccessListener {
 
                 val userdetails: MutableMap<String, Any> = HashMap()
                 userdetails["username"] = username
-                userdetails["email"] = _emailId
+                userdetails["Full Name"] = _fullName
                 userdetails["password"] = password
                 databaseReference.child(unique_id).setValue(userdetails).addOnFailureListener {
                     Toast.makeText(activity,"account cannot be created",Toast.LENGTH_SHORT).show()
@@ -61,7 +61,7 @@ public class FirebaseClass(val user: AdminUser, val activity: Activity) {
           Toast.makeText(activity,"Login Successfull",Toast.LENGTH_SHORT).show()
            val a : AdminLogin = AdminLogin()
            val b : Context = activity
-           b.startActivity(Intent(activity,MostFrontPage::class.java))
+           b.startActivity(Intent(activity,AdminUserDetails::class.java))
           activity.finish()
       }.addOnFailureListener {
           Toast.makeText(activity,"Login Failed",Toast.LENGTH_SHORT).show()

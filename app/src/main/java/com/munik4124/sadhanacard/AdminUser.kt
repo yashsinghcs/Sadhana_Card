@@ -1,6 +1,6 @@
 package com.munik4124.sadhanacard
 
-public class AdminUser(val uniqueId : String, val user_name : String, val password : String, val emailId : String)
+public class AdminUser(val uniqueId : String, val user_name : String, val password : String, val full_name : String)
 {
      var unique_Id : String = uniqueId
      get() {
@@ -25,7 +25,7 @@ public class AdminUser(val uniqueId : String, val user_name : String, val passwo
             field = value
         }
 
-    var email_Id : String = emailId
+    var fullName : String = full_name
         get() {
             return field
         }
