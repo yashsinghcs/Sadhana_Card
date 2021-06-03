@@ -26,9 +26,9 @@ class AdminUserDetails : AppCompatActivity() {
 
     private fun setUpTabs() {
         val adapter = ViewPagerAdapter(supportFragmentManager)
-        adapter.addFragment(AdditionalDetailsFragment(),"AdditionalDetailsFragment")
-        adapter.addFragment(PersonalDetailsFragment(),"PersonalDetailsFragment")
-        adapter.addFragment(SpiritualDetailsFragment(),"SpiritualDetailsFragment")
+        adapter.addFragment(AdditionalDetailsFragment(),"")
+        adapter.addFragment(PersonalDetailsFragment(),"")
+        adapter.addFragment(SpiritualDetailsFragment(),"")
         viewPager.adapter = adapter
         tabs.setupWithViewPager(viewPager)
 
