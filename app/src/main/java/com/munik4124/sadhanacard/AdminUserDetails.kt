@@ -22,13 +22,14 @@ class AdminUserDetails : AppCompatActivity() {
         tabs = findViewById(R.id.tabs)
 
         setUpTabs()
+
     }
 
-    private fun setUpTabs() {
+    public fun setUpTabs() {
         val adapter = ViewPagerAdapter(supportFragmentManager)
-        adapter.addFragment(AdditionalDetailsFragment(),"")
         adapter.addFragment(PersonalDetailsFragment(),"")
         adapter.addFragment(SpiritualDetailsFragment(),"")
+        adapter.addFragment(AdditionalDetailsFragment(),"")
         viewPager.adapter = adapter
         tabs.setupWithViewPager(viewPager)
 
@@ -36,4 +37,6 @@ class AdminUserDetails : AppCompatActivity() {
         tabs.getTabAt(1)!!.setIcon(R.drawable.ic_baseline_spiritual_details)
         tabs.getTabAt(2)!!.setIcon(R.drawable.ic_baseline_other_details)
     }
+
+
 }

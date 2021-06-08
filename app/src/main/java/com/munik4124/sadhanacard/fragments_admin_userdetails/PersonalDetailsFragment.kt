@@ -1,3 +1,5 @@
+@file:JvmName("PersonalDetailsFragmenTKt")
+
 package com.munik4124.sadhanacard.fragments_admin_userdetails
 
 import android.os.Bundle
@@ -5,6 +7,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
+import android.widget.Button
+import androidx.viewpager.widget.ViewPager
 import com.munik4124.sadhanacard.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -19,7 +25,6 @@ private const val ARG_PARAM2 = "param2"
  */
 class PersonalDetailsFragment : Fragment() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -30,7 +35,24 @@ class PersonalDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_personal_details, container, false)
+         var binding =  inflater.inflate(R.layout.fragment_personal_details, container, false)
+
+       val autoCompletetextField : AutoCompleteTextView = binding.findViewById(R.id.autoCompleteTextField)
+        val next : Button = binding.findViewById(R.id.button_next_personalDetails)
+
+        val languages = resources.getStringArray(R.array.blood_group)
+        val arrayAdapter = ArrayAdapter(requireContext(),R.layout.blood_group,languages)
+        autoCompletetextField.setAdapter(arrayAdapter)  //PersonalDetailsFragment
+
+         val v : ViewPager = activity!!.findViewById(R.id.viewPager)
+        next.setOnClickListener {
+
+            v.setCurrentItem(v.currentItem + 1,true)
+
+
+        }
+
+        return binding
     }
 
 }

@@ -38,7 +38,7 @@
             app:layout_constraintVertical_bias="0.16000003" />
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:hint="Devotee or Not"
@@ -49,8 +49,9 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.24000001">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/username_login3"
+            <AutoCompleteTextView
+                android:inputType="none"
+                android:id="@+id/devotee_or_not"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -59,6 +60,8 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
+            android:enabled="false"
+            android:id="@+id/for_how_many_years"
             android:hint="For how many years"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -68,16 +71,16 @@
             app:layout_constraintVertical_bias="0.24000001">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/username_login1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout3"
+            android:id="@+id/doYouChant"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
+            android:enabled="false"
             android:hint="How many rounds"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -87,14 +90,13 @@
             app:layout_constraintVertical_bias="0.37">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/username_login5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout4"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:hint="Do you chant?"
@@ -105,15 +107,16 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.37">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/username_login7"
+            <AutoCompleteTextView
+                android:inputType="none"
+                android:id="@+id/do_you_chant"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout2"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:hint="Initiated or not?"
@@ -123,17 +126,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/username_login8"
+            <AutoCompleteTextView
+                android:inputType="none"
+                android:id="@+id/initiated_or_not"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout"
+            android:id="@+id/initiatedOrNot"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
+            android:enabled="false"
             android:hint="Which maharaj?"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -142,13 +147,12 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/username_login9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/button_next_AdditionalDetails"
             android:layout_width="299dp"
             android:layout_height="55dp"
             android:text="Next"
