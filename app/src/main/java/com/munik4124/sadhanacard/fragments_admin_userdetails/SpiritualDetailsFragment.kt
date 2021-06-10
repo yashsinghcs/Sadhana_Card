@@ -4,11 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.*
 import android.widget.AdapterView.OnItemClickListener
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import android.widget.Button
-import android.widget.Toast
 import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
@@ -28,6 +25,9 @@ private const val ARG_PARAM2 = "param2"
  */
 class SpiritualDetailsFragment : Fragment() {
    
+private lateinit var devotee_or_not : EditText
+private lateinit var do_you_chant : EditText
+private lateinit var initiated_or_not : EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -104,6 +104,10 @@ class SpiritualDetailsFragment : Fragment() {
             ).show()
         })
 
+        devotee_or_not = binding.findViewById(R.id.devotee_or_not_edit_text)
+        do_you_chant = binding.findViewById(R.id.do_you_chant_edit_text)
+        initiated_or_not = binding.findViewById(R.id.initiated_or_not_edit_text)
+
         val next : Button = binding.findViewById(R.id.button_next_AdditionalDetails)
         val v : ViewPager = activity!!.findViewById(R.id.viewPager)
 
@@ -115,5 +119,8 @@ class SpiritualDetailsFragment : Fragment() {
         }
         return binding
     }
-
+    override fun onStop() {
+        super.onStop()
+        Toast.makeText(activity,"please login to continue   Fragment2",Toast.LENGTH_SHORT).show()
+    }
 }

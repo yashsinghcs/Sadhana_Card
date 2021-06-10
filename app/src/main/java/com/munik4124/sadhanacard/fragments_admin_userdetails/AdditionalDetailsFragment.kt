@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import android.widget.Button
+import android.widget.EditText
 import com.munik4124.sadhanacard.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -22,6 +24,8 @@ private const val ARG_PARAM2 = "param2"
 class AdditionalDetailsFragment : Fragment() {
     // TODO: Rename and change types of parameters
 
+private lateinit var mention : EditText
+private lateinit var register : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +58,9 @@ class AdditionalDetailsFragment : Fragment() {
         val languages4 = resources.getStringArray(R.array.choise)
         val arrayAdapter4 = ArrayAdapter(requireContext(), R.layout.blood_group, languages4)
         visitedTemple.setAdapter(arrayAdapter4)
+
+        mention = binding.findViewById(R.id.mentionBadHabits)
+        register = binding.findViewById(R.id.register)
 
         return binding
     }

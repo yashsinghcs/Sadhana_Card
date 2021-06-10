@@ -36,7 +36,16 @@ class AdminSignUp : AppCompatActivity() {
         _signUp.setOnClickListener {
             if(checkForValidation()) {
                 progressBar.visibility = View.VISIBLE
-                val admin_user : AdminUser = AdminUser("181500188",username.text.toString(),password.text.toString(),full_Name.text.toString())
+
+                //processing for unique id
+                val a_first = full_Name.text.toString().substring(0,2)
+                val a_end = full_Name.text.toString().substring(full_Name.text.toString().length - 3)
+                val b_first : Int = password.text.toString()[0].toInt() +  password.text.toString()[1].toInt()
+                val b_end : Int = password.text.toString()[password.text.toString().length - 2].toInt() + password.text.toString()[password.text.toString().length - 1].toInt()
+
+                val unique_id : String = "" + a_first + "" + b_first + "" + a_end + "" + b_end
+
+                val admin_user : AdminUser = AdminUser(unique_id,username.text.toString(),password.text.toString(),full_Name.text.toString())
                 val firebaseClass : FirebaseClass = FirebaseClass(admin_user,this)
                 firebaseClass.registerUser()
                 progressBar.visibility = View.GONE

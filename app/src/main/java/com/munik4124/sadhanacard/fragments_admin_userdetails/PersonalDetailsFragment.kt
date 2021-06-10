@@ -7,9 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import android.widget.Button
+import android.widget.*
 import androidx.viewpager.widget.ViewPager
 import com.munik4124.sadhanacard.R
 
@@ -24,6 +22,12 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class PersonalDetailsFragment : Fragment() {
+
+    private lateinit var first_name : EditText
+    private lateinit var last_name : EditText
+    private lateinit var age : EditText
+    private lateinit var address : EditText
+    private lateinit var phoneNo : EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +48,12 @@ class PersonalDetailsFragment : Fragment() {
         val arrayAdapter = ArrayAdapter(requireContext(),R.layout.blood_group,languages)
         autoCompletetextField.setAdapter(arrayAdapter)  //PersonalDetailsFragment
 
+        first_name = binding.findViewById(R.id.first_name)
+        last_name = binding.findViewById(R.id.last_name)
+        age = binding.findViewById(R.id.age)
+        address = binding.findViewById(R.id.address)
+        phoneNo = binding.findViewById(R.id.phone_no)
+
          val v : ViewPager = activity!!.findViewById(R.id.viewPager)
         next.setOnClickListener {
 
@@ -55,4 +65,18 @@ class PersonalDetailsFragment : Fragment() {
         return binding
     }
 
+    override fun onResume() {
+        super.onResume()
+
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Toast.makeText(activity,"please login to continue   ABCD",Toast.LENGTH_SHORT).show()
+    }
 }
