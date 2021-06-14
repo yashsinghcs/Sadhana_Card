@@ -9,7 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.viewpager.widget.ViewPager
+import com.munik4124.sadhanacard.AdminUser
+import com.munik4124.sadhanacard.FirebaseClass
 import com.munik4124.sadhanacard.R
+import com.munik4124.sadhanacard.userExtraDetails_Admin.Personaldetails
+import com.munik4124.sadhanacard.userExtraDetails_Admin.SpiritualDetails
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -56,27 +60,14 @@ class PersonalDetailsFragment : Fragment() {
 
          val v : ViewPager = activity!!.findViewById(R.id.viewPager)
         next.setOnClickListener {
-
+             val p = Personaldetails(first_name.text.toString(),last_name.text.toString(),autoCompletetextField.text.toString(),Integer.parseInt(age.text.toString()),address.text.toString(),phoneNo.text.toString())
+            val c = FirebaseClass(AdminUser("a","a","a","a"), activity!!,p, SpiritualDetails("a","a","a",1,"a","A"))
+            c.registerUserDetails()
             v.setCurrentItem(v.currentItem + 1,true)
-
 
         }
 
         return binding
     }
 
-    override fun onResume() {
-        super.onResume()
-
-    }
-
-    override fun onStop() {
-        super.onStop()
-
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Toast.makeText(activity,"please login to continue   ABCD",Toast.LENGTH_SHORT).show()
-    }
 }

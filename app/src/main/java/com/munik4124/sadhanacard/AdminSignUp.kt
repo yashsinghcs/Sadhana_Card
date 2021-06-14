@@ -9,6 +9,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import com.munik4124.sadhanacard.userExtraDetails_Admin.Personaldetails
+import com.munik4124.sadhanacard.userExtraDetails_Admin.SpiritualDetails
 
 class AdminSignUp : AppCompatActivity() {
 
@@ -46,7 +48,7 @@ class AdminSignUp : AppCompatActivity() {
                 val unique_id : String = "" + a_first + "" + b_first + "" + a_end + "" + b_end
 
                 val admin_user : AdminUser = AdminUser(unique_id,username.text.toString(),password.text.toString(),full_Name.text.toString())
-                val firebaseClass : FirebaseClass = FirebaseClass(admin_user,this)
+                val firebaseClass : FirebaseClass = FirebaseClass(admin_user,this, Personaldetails("a","a","a",1,"A","b"),SpiritualDetails("a","a","a",1,"a","A"))
                 firebaseClass.registerUser()
                 progressBar.visibility = View.GONE
             }

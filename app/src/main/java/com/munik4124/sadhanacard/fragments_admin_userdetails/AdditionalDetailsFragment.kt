@@ -5,10 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import android.widget.Button
-import android.widget.EditText
+import android.widget.*
 import com.munik4124.sadhanacard.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -26,6 +23,7 @@ class AdditionalDetailsFragment : Fragment() {
 
 private lateinit var mention : EditText
 private lateinit var register : Button
+private lateinit var a : PersonalDetailsFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,9 +59,14 @@ private lateinit var register : Button
 
         mention = binding.findViewById(R.id.mentionBadHabits)
         register = binding.findViewById(R.id.register)
+        register.setOnClickListener {
+            a = PersonalDetailsFragment()
 
+        }
         return binding
     }
+
+
 
 
 }
