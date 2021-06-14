@@ -12,6 +12,7 @@ import androidx.viewpager.widget.ViewPager
 import com.munik4124.sadhanacard.AdminUser
 import com.munik4124.sadhanacard.FirebaseClass
 import com.munik4124.sadhanacard.R
+import com.munik4124.sadhanacard.userExtraDetails_Admin.AdditionalDetails
 import com.munik4124.sadhanacard.userExtraDetails_Admin.Personaldetails
 import com.munik4124.sadhanacard.userExtraDetails_Admin.SpiritualDetails
 
@@ -61,7 +62,7 @@ class PersonalDetailsFragment : Fragment() {
          val v : ViewPager = activity!!.findViewById(R.id.viewPager)
         next.setOnClickListener {
              val p = Personaldetails(first_name.text.toString(),last_name.text.toString(),autoCompletetextField.text.toString(),Integer.parseInt(age.text.toString()),address.text.toString(),phoneNo.text.toString())
-            val c = FirebaseClass(AdminUser("a","a","a","a"), activity!!,p, SpiritualDetails("a","a","a",1,"a","A"))
+            val c = FirebaseClass(AdminUser("a","a","a","a"), activity!!,p, SpiritualDetails("a","a","a",1,"a","A"), AdditionalDetails("a","A","A","A","A"))
             c.registerUserDetails()
             v.setCurrentItem(v.currentItem + 1,true)
 

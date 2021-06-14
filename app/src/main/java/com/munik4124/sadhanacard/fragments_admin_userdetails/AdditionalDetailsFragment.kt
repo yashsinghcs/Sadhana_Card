@@ -6,7 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import com.munik4124.sadhanacard.AdminUser
+import com.munik4124.sadhanacard.FirebaseClass
 import com.munik4124.sadhanacard.R
+import com.munik4124.sadhanacard.userExtraDetails_Admin.AdditionalDetails
+import com.munik4124.sadhanacard.userExtraDetails_Admin.Personaldetails
+import com.munik4124.sadhanacard.userExtraDetails_Admin.SpiritualDetails
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -60,7 +65,9 @@ private lateinit var a : PersonalDetailsFragment
         mention = binding.findViewById(R.id.mentionBadHabits)
         register = binding.findViewById(R.id.register)
         register.setOnClickListener {
-            a = PersonalDetailsFragment()
+            val p = AdditionalDetails(interested.text.toString(),aware_sadhnaCard.text.toString(),badHabbits.text.toString(), mention.text.toString(),visitedTemple.text.toString())
+            val c = FirebaseClass(AdminUser("a","a","a","a"), activity!!, Personaldetails("a","a","a",1,"A","b"),SpiritualDetails("a","a","a",1,"a","A"),p)
+            c.registerUserDetailsAdditionalDetails()
 
         }
         return binding

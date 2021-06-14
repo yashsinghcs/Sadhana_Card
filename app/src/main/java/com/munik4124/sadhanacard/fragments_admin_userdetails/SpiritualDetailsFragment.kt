@@ -13,6 +13,7 @@ import com.google.android.material.textfield.TextInputLayout
 import com.munik4124.sadhanacard.AdminUser
 import com.munik4124.sadhanacard.FirebaseClass
 import com.munik4124.sadhanacard.R
+import com.munik4124.sadhanacard.userExtraDetails_Admin.AdditionalDetails
 import com.munik4124.sadhanacard.userExtraDetails_Admin.Personaldetails
 import com.munik4124.sadhanacard.userExtraDetails_Admin.SpiritualDetails
 
@@ -120,7 +121,7 @@ private lateinit var initiated_or_not : EditText
 
         next.setOnClickListener {
             val p = SpiritualDetails(autoCompletetextField_devotee_or_not.text.toString(),devotee_or_not.text.toString(),autoCompletetextField_do_you_chant.text.toString(),Integer.parseInt(do_you_chant.text.toString()),autoCompletetextField_initiated_or_not.text.toString(),initiated_or_not.text.toString())
-            val c = FirebaseClass(AdminUser("a","a","a","a"), activity!!,Personaldetails("a","a","a",1,"A","b"),p)
+            val c = FirebaseClass(AdminUser("a","a","a","a"), activity!!,Personaldetails("a","a","a",1,"A","b"),p, AdditionalDetails("a","A","A","A","A"))
             c.registerUserDetailsSpiritual()
             v.setCurrentItem(v.currentItem + 1, true)
 

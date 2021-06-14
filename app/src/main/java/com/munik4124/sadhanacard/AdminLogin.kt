@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
+import com.munik4124.sadhanacard.userExtraDetails_Admin.AdditionalDetails
 import com.munik4124.sadhanacard.userExtraDetails_Admin.Personaldetails
 import com.munik4124.sadhanacard.userExtraDetails_Admin.SpiritualDetails
 
@@ -36,7 +37,7 @@ class AdminLogin : AppCompatActivity() {
         login.setOnClickListener {
           if(checkForValidation()) {
               val admin_user : AdminUser = AdminUser("",username.text.toString(),password.text.toString(),"")
-              val firebaseClass : FirebaseClass = FirebaseClass(admin_user,this, Personaldetails("a","a","a",1,"A","b"), SpiritualDetails("a","a","a",1,"a","A"))
+              val firebaseClass : FirebaseClass = FirebaseClass(admin_user,this, Personaldetails("a","a","a",1,"A","b"), SpiritualDetails("a","a","a",1,"a","A"), AdditionalDetails("a","A","A","A","A"))
               firebaseClass.loginUser()
           }
         }
