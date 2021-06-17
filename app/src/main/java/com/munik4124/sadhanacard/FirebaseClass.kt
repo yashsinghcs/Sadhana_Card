@@ -75,10 +75,7 @@ public class FirebaseClass(User: AdminUser, val activity: Activity, user1 : Pers
     public fun loginUser()  {
       auth.signInWithEmailAndPassword(user.userName,user.password).addOnSuccessListener {
           Toast.makeText(activity,"Login Successfull",Toast.LENGTH_SHORT).show()
-           val a : AdminLogin = AdminLogin()
-           val b : Context = activity
-           b.startActivity(Intent(activity,AdminUserDetails::class.java))
-          activity.finish()
+            val databaseReference1 = FirebaseDatabase.getInstance().getReference("AdminUser_Details").child("personal details").child(auth.currentUser!!.uid).addListenerForSingleValueEvent(valueEventListener)
       }.addOnFailureListener {
           Toast.makeText(activity,"Login Failed",Toast.LENGTH_SHORT).show()
       }
@@ -86,13 +83,16 @@ public class FirebaseClass(User: AdminUser, val activity: Activity, user1 : Pers
 
     public fun registerUserDetails() {
         val databaseReference1 = FirebaseDatabase.getInstance().getReference("AdminUser_Details").child("personal details")
+
         val userdetails: MutableMap<String, Any> = HashMap()
+
         userdetails["firstName"] = user_details.first_name
         userdetails["lastName"] = user_details.last_name
         userdetails["bloodGroup"] = user_details.blood_group
         userdetails["age"] = user_details.age
         userdetails["address"] = user_details._address
         userdetails["phoneNo"] = user_details.phone_NO
+
         databaseReference1.child(auth.currentUser!!.uid).setValue(userdetails).addOnFailureListener {
             Toast.makeText(activity,"cannot be added",Toast.LENGTH_SHORT).show()
         }.addOnSuccessListener {
@@ -128,6 +128,60 @@ public class FirebaseClass(User: AdminUser, val activity: Activity, user1 : Pers
             Toast.makeText(activity,"cannot be added",Toast.LENGTH_SHORT).show()
         }.addOnSuccessListener {
             Toast.makeText(activity,"added successfully",Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    val valueEventListener : ValueEventListener = object : ValueEventListener {
+        override fun onDataChange(snapshot: DataSnapshot) {
+            if(snapshot.exists()) {
+                Toast.makeText(activity,"Login Successfull",Toast.LENGTH_SHORT).show()
+                val databaseReference1 = FirebaseDatabase.getInstance().getReference("AdminUser_Details").child("spiritual details").child(auth.currentUser!!.uid).addListenerForSingleValueEvent(valueEventListener1)
+            }
+            else{
+                val b : Context = activity
+                b.startActivity(Intent(activity,AdminUserDetails::class.java))
+                activity.finish()
+            }
+        }
+
+        override fun onCancelled(error: DatabaseError) {
+            TODO("Not yet implemented")
+        }
+    }
+
+    val valueEventListener1 : ValueEventListener = object : ValueEventListener {
+        override fun onDataChange(snapshot: DataSnapshot) {
+            if(snapshot.exists()) {
+                Toast.makeText(activity,"Login Successfull",Toast.LENGTH_SHORT).show()
+                val databaseReference1 = FirebaseDatabase.getInstance().getReference("AdminUser_Details").child("additional details").child(auth.currentUser!!.uid).addListenerForSingleValueEvent(valueEventListener2)
+            }
+            else{
+                val b : Context = activity
+                b.startActivity(Intent(activity,AdminUserDetails::class.java))
+                activity.finish()
+            }
+        }
+
+        override fun onCancelled(error: DatabaseError) {
+            TODO("Not yet implemented")
+        }
+    }
+
+    val valueEventListener2 : ValueEventListener = object : ValueEventListener {
+        override fun onDataChange(snapshot: DataSnapshot) {
+            if(snapshot.exists()) {
+                Toast.makeText(activity,"Login Successfull",Toast.LENGTH_SHORT).show()
+
+            }
+            else{
+                val b : Context = activity
+                b.startActivity(Intent(activity,AdminUserDetails::class.java))
+                activity.finish()
+            }
+        }
+
+        override fun onCancelled(error: DatabaseError) {
+            TODO("Not yet implemented")
         }
     }
 }

@@ -73,7 +73,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/devotee_or_not_edit_text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="number"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -93,7 +94,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/do_you_chant_edit_text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="number"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout

@@ -33,7 +33,9 @@ class SpiritualDetailsFragment : Fragment() {
 private lateinit var devotee_or_not : EditText
 private lateinit var do_you_chant : EditText
 private lateinit var initiated_or_not : EditText
-
+private lateinit var autoCompletetextField_devotee_or_not : AutoCompleteTextView
+private lateinit var autoCompletetextField_do_you_chant : AutoCompleteTextView
+private lateinit var autoCompletetextField_initiated_or_not : AutoCompleteTextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +49,7 @@ private lateinit var initiated_or_not : EditText
 
         var binding = inflater.inflate(R.layout.fragment_spiritual_details, container, false)
 
-        val autoCompletetextField_devotee_or_not : AutoCompleteTextView = binding.findViewById(R.id.devotee_or_not)
+      autoCompletetextField_devotee_or_not = binding.findViewById(R.id.devotee_or_not)
         val forHowManyYears : TextInputLayout = binding.findViewById(R.id.for_how_many_years)
         val doYouChant : TextInputLayout = binding.findViewById(R.id.doYouChant)
         val initiatedOrNot : TextInputLayout = binding.findViewById(R.id.initiatedOrNot)
@@ -71,7 +73,7 @@ private lateinit var initiated_or_not : EditText
             ).show()
         })
 
-        val autoCompletetextField_do_you_chant : AutoCompleteTextView = binding.findViewById(R.id.do_you_chant)
+         autoCompletetextField_do_you_chant  = binding.findViewById(R.id.do_you_chant)
 
         val languages2 = resources.getStringArray(R.array.choise)
         val arrayAdapter2 = ArrayAdapter(requireContext(), R.layout.blood_group, languages2)
@@ -91,7 +93,7 @@ private lateinit var initiated_or_not : EditText
             ).show()
         })
 
-        val autoCompletetextField_initiated_or_not : AutoCompleteTextView = binding.findViewById(R.id.initiated_or_not)
+         autoCompletetextField_initiated_or_not = binding.findViewById(R.id.initiated_or_not)
 
         val languages3 = resources.getStringArray(R.array.choise)
         val arrayAdapter3 = ArrayAdapter(requireContext(), R.layout.blood_group, languages3)
@@ -120,14 +122,61 @@ private lateinit var initiated_or_not : EditText
         val v : ViewPager = activity!!.findViewById(R.id.viewPager)
 
         next.setOnClickListener {
-            val p = SpiritualDetails(autoCompletetextField_devotee_or_not.text.toString(),devotee_or_not.text.toString(),autoCompletetextField_do_you_chant.text.toString(),Integer.parseInt(do_you_chant.text.toString()),autoCompletetextField_initiated_or_not.text.toString(),initiated_or_not.text.toString())
-            val c = FirebaseClass(AdminUser("a","a","a","a"), activity!!,Personaldetails("a","a","a",1,"A","b"),p, AdditionalDetails("a","A","A","A","A"))
-            c.registerUserDetailsSpiritual()
-            v.setCurrentItem(v.currentItem + 1, true)
-
-
+            if(checkForValidation()) {
+                val p = SpiritualDetails(autoCompletetextField_devotee_or_not.text.toString(), devotee_or_not.text.toString(), autoCompletetextField_do_you_chant.text.toString(), Integer.parseInt(do_you_chant.text.toString()), autoCompletetextField_initiated_or_not.text.toString(), initiated_or_not.text.toString())
+                val c = FirebaseClass(AdminUser("a", "a", "a", "a"), activity!!, Personaldetails("a", "a", "a", 1, "A", "b"), p, AdditionalDetails("a", "A", "A", "A", "A"))
+                c.registerUserDetailsSpiritual()
+                v.setCurrentItem(v.currentItem + 1, true)
+            }
         }
         return binding
     }
-
+    private fun checkForValidation() : Boolean {
+        if(autoCompletetextField_devotee_or_not.text.toString().isEmpty()) {
+            autoCompletetextField_devotee_or_not.error = "please select an option"
+            autoCompletetextField_devotee_or_not.requestFocus()
+            return false
+        }
+        if(autoCompletetextField_devotee_or_not.text.toString().equals("Yes")) {
+            if (devotee_or_not.text.toString().isEmpty()) {
+                devotee_or_not.error = "please fill for how many years"
+                devotee_or_not.requestFocus()
+                return false
+            }
+        }
+        else{
+            devotee_or_not.setText("null")
+        }
+        if(autoCompletetextField_do_you_chant.text.toString().isEmpty()) {
+            autoCompletetextField_do_you_chant.error = "please select an option"
+            autoCompletetextField_do_you_chant.requestFocus()
+            return false
+        }
+        if(autoCompletetextField_do_you_chant.text.toString().equals("Yes")) {
+            if (do_you_chant.text.toString().isEmpty()) {
+                do_you_chant.error = "please enter the no of rounds"
+                do_you_chant.requestFocus()
+                return false
+            }
+        }
+        else{
+            do_you_chant.setText("0")
+        }
+        if(autoCompletetextField_initiated_or_not.text.toString().isEmpty()) {
+            autoCompletetextField_initiated_or_not.error = "please select an option"
+            autoCompletetextField_initiated_or_not.requestFocus()
+            return false
+        }
+        if(autoCompletetextField_initiated_or_not.text.toString().equals("Yes")) {
+            if (initiated_or_not.text.toString().isEmpty()) {
+                initiated_or_not.error = "please enter the maharajs name"
+                initiated_or_not.requestFocus()
+                return false
+            }
+        }
+        else{
+            initiated_or_not.setText("null")
+        }
+        return true
+    }
 }
