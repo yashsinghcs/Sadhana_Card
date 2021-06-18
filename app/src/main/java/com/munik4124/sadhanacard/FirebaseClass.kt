@@ -171,7 +171,9 @@ public class FirebaseClass(User: AdminUser, val activity: Activity, user1 : Pers
         override fun onDataChange(snapshot: DataSnapshot) {
             if(snapshot.exists()) {
                 Toast.makeText(activity,"Login Successfull",Toast.LENGTH_SHORT).show()
-
+                val b : Context = activity
+                b.startActivity(Intent(activity,AdminMainPage::class.java))
+                activity.finish()
             }
             else{
                 val b : Context = activity
