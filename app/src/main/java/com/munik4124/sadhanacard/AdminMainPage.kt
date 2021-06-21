@@ -8,7 +8,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 
 class AdminMainPage : AppCompatActivity() {
-    private lateinit var toggle : ActionBarDrawerToggle
+
     private lateinit var drawer : DrawerLayout
     private lateinit var text : TextView
     override fun onCreate(savedInstanceState: Bundle?) {

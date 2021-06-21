@@ -2,11 +2,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 <item
     android:id="@+id/item1"
-    android:title="item1"/>
+    android:title="personal details"/>
     <item
         android:id="@+id/item2"
-        android:title="item2"/>
+        android:title="generate sadhna card"/>
     <item
         android:id="@+id/item3"
-        android:title="item3"/>
+        android:title="assign duties"/>
+    <item
+        android:id="@+id/item4"
+        android:title="devotee verification"/>
+    <item
+        android:id="@+id/item5"
+        android:title="assign timetable"/>
+    <item
+        android:id="@+id/item6"
+        android:title="verify sadhna card"/>
+    <item
+        android:id="@+id/item7"
+        android:title="mark attendence"/>
 </menu>
