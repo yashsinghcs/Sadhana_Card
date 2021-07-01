@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SadhanaCard">
-        <activity android:name=".AdminSignUp"></activity>
+        <activity android:name=".AdminMainPage"></activity>
+        <activity android:name=".AdminUserDetails" />
+        <activity android:name=".AdminSignUp" />
         <activity android:name=".AdminLogin" />
         <activity android:name=".DevoteesLogin" />
         <activity android:name=".ChoiceAdminVsDevotees" />
